@@ -11,7 +11,7 @@ public class PostController {
 
     @GetMapping ("/posts")
     @ResponseBody
-    public String getAllPosts () {
+    public String getAllPosts() {
         return "posts index page";
     }
 

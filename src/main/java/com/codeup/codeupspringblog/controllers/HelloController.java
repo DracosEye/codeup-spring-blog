@@ -2,6 +2,7 @@ package com.codeup.codeupspringblog.controllers;
 
 import org.apache.logging.log4j.message.Message;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -17,11 +18,14 @@ class HelloController {
         return "counter reset to " + counter;
     }
 
+
+
 //    @RequestMapping(method = RequestMethod.GET, name = "/hello")
     @GetMapping(path = "/hello/{personName}")
-    @ResponseBody
-    public String hello(@PathVariable String personName) {
-        return "Hello " + personName;
+//    @ResponseBody
+    public String hello(@PathVariable String personName, Model model) {
+        model.addAttribute("name", personName);
+        return "hello";
     }
 
     @GetMapping(path = "/hello-msg/{personName}", produces = "application/json")
