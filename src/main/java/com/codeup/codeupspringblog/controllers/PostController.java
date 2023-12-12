@@ -31,14 +31,13 @@ public class PostController {
     }
 
     @GetMapping ("/create")
-    @ResponseBody
     public String getForm() {
-        return "view the form for creating a post";
+        return "posts/show";
     }
 
     @PostMapping("/create")
-    @ResponseBody
-    public String createPost() {
-        return "create a new post";
+    public String createPost(@RequestParam(name="title") String title, @RequestParam(name="body") String body) {
+        posts.add(new Post(posts.size(), title, body));
+        return "redirect:/posts";
     }
 }
