@@ -10,7 +10,7 @@
     <th:block th:include="~{partials/post_partials :: header}"></th:block>
 
     <div class="post-container" th:each="post:${posts}">
-        <h2 th:text="${post.title}"></h2>
+        <a th:href="@{|/posts/${post.id}|}"><h2 th:text="${post.title}"></h2></a>
         <p th:text="${post.body}"></p>
     </div>
 
