@@ -15,8 +15,8 @@ import java.util.List;
 @RequestMapping("/posts")
 public class PostController {
 
-    private PostRepository postRepo;
-    private UserRepository userRepo;
+    private final PostRepository postRepo;
+    private final UserRepository userRepo;
 
 //    Post post1 = new Post(1, "I have an opinion", "I am for some things and against some things and some stuff pisses me off and that's your problem! Murica!");
 //    Post post2 = new Post(2, "Everyone is special but you", "If everyone were special, well, that would kind of wear it down. So some of you are special and some of you ain't special like you and you and you are and you're not.");

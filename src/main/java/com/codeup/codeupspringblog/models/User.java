@@ -26,7 +26,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user") // user is the identifier in the Post model
     private List<Post> posts;
 
     public User(String username, String email, String password) {
