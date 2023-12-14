@@ -1,6 +1,7 @@
 package com.codeup.codeupspringblog.controllers;
 
 import com.codeup.codeupspringblog.dao.PostRepository;
+import com.codeup.codeupspringblog.dao.UserRepository;
 import com.codeup.codeupspringblog.models.Post;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import java.util.List;
 public class PostController {
 
     private PostRepository postRepo;
+    private UserRepository userRepo;
 
 //    Post post1 = new Post(1, "I have an opinion", "I am for some things and against some things and some stuff pisses me off and that's your problem! Murica!");
 //    Post post2 = new Post(2, "Everyone is special but you", "If everyone were special, well, that would kind of wear it down. So some of you are special and some of you ain't special like you and you and you are and you're not.");
@@ -49,8 +51,9 @@ public class PostController {
 
     @PostMapping("/create")
     public String createPost(@RequestParam(name="title") String title, @RequestParam(name="body") String body) {
-//        posts.add(new Post(posts.size(), title, body));
-        postRepo.save(new Post(title, body));
+        Post newPost = new Post(title, body);
+        newPost.setUser(userRepo.findUserById(1));
+        postRepo.save(newPost);
         return "redirect:/posts";
     }
 }

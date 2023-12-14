@@ -10,6 +10,7 @@
 <div th:each="ad : ${ads}">
     <h2 th:utext="${ad.title}"></h2>
     <p th:utext="${ad.description}"></p>
+    <p th:text="${ad.user.username}"></p>
 </div>
 <script src="/js/ad.js"></script>
 </body>
